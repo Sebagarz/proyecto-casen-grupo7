@@ -26,6 +26,7 @@ proyecto-casen-grupo7/
  |  |- data/
  |  |  |- original/
  |  |  |- proc/
+ |  |  |  |- data_preparada_2009.rds
  |  |  |  |- data_preparada_2011.rds
  |  |  |  |- data_preparada_2013.rds
  |  |  |  |- data_preparada_2015.rds
@@ -44,6 +45,7 @@ proyecto-casen-grupo7/
  |  |- 01b_analisis_2022.R
  |  |- 02a_preparacion_2017.R
  |  |- 04a_preparacion_2013.R
+ |  |- 06_preparacion_2009.R
  |  |- 3a_preparacion_2015.R
  |  |- README-prod.md
  |  |- casen2022.R
