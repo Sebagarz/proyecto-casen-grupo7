@@ -13,6 +13,7 @@ Este proyecto se organiza de la siguiente manera:
 <!-- WORKING_TREE_START -->
 ```text
 proyecto-casen-grupo7/
+ |- .gitignore
  |- .vscode/
  |  |- settings.json
  |- README.md
@@ -24,6 +25,7 @@ proyecto-casen-grupo7/
  |  |- data/
  |  |  |- original/
  |  |  |- proc/
+ |  |  |  |- data_preparada_2022.rds
  |  |- images/
  |  |- original-code/
  |- libs/
@@ -31,12 +33,17 @@ proyecto-casen-grupo7/
  |- output/
  |  |- graphs/
  |  |- tables/
+ |  |  |- tabla_pobreza_2022.rds
  |- processing/
+ |  |- 01_preparacion.R
+ |  |- 02_analisis.R
  |  |- README-prod.md
+ |  |- casen2022.R
  |  |- prod_analysis.Rmd
  |  |- prod_analysis.html
  |  |- prod_prep.Rmd
  |  |- prod_prep.html
+ |- proyecto-casen-grupo7.Rproj
  |- scripts/
  |  |- update-working-tree.sh
 ```
