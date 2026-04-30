@@ -10,7 +10,7 @@ names(casen_2015)
 casen_limpia_2015 <- casen_2015 %>% 
   filter(nucleo == 1) %>% 
   select(id_vivienda, hogar, region, 
-    pobreza_2013,  # Variable oficial para la serie histórica[cite: 1, 2]
+    pobreza_2013,  
     varunit, varstrat, 
     expr, numper, ytotcorh)
 
