@@ -25,6 +25,7 @@ proyecto-casen-grupo7/
  |  |- data/
  |  |  |- original/
  |  |  |- proc/
+ |  |  |  |- data_preparada_2017.rds
  |  |  |  |- data_preparada_2022.rds
  |  |- images/
  |  |- original-code/
@@ -35,8 +36,9 @@ proyecto-casen-grupo7/
  |  |- tables/
  |  |  |- tabla_pobreza_2022.rds
  |- processing/
- |  |- 01_preparacion.R
- |  |- 02_analisis.R
+ |  |- 01a_preparacion_2022.R
+ |  |- 01b_analisis_2022.R
+ |  |- 02a_preparacion_2017.R
  |  |- README-prod.md
  |  |- casen2022.R
  |  |- prod_analysis.Rmd
