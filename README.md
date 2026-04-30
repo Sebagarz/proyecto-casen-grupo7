@@ -62,3 +62,48 @@ proyecto-casen-grupo7/
 Este working tree incorpora las carpetas y archivos principales relevantes del repo (omite algunas) y se actualiza automáticamente al hacer commit mediante una github action que se encuentra definida en el archivo `.github/workflows/update-working-tree.yml`. El propósito de esta acción es mantener un registro actualizado de la estructura del proyecto, lo que facilita la navegación y organización de los archivos para los estudiantes.
 
 
+repositorio que cuenta con las bases sincronizadas de la casen desde el año 2009 al año 2022, regida mediante la nueva metodologia de 2024.
+
+las carpetas principales de trabajo son las siguientes:
+
+input/data/original: acá estan las bases de datos brutas de la casesn, estas no están subidas a github debido a que son muy pesadas.
+input/data/proc: acá están las bases de datos limpias en formato .rds, estos datos ya están armonizados y listos para analizar.
+processing: scripts R de limpieza de bases, hay un script que habla sobre analisis casen 2022, este ignorarlo, debido a que solo eran pruebas para ver si funcionaba bien
+luego esta será eliminada.
+
+output: esta carpeta aún está vacia debido a que acá irán todas las tablas y graficos que se hagan.
+
+METODOLOGIA LIMPIEZA
+
+Para el filtro de selección se trabajó  exclusivamente con el nucleo principal de cada hogar (nucleo==1)
+para el ingreso armonizado, se calculó el ingreso automono equivalente (yae) utilizando la equivalencia oficial recomendada = yae= ytotcorh/numper^07
+
+tambien, se utilizó la varibale pobreza_2013 en todas las bases para aplicar la metodologia a los años anteriores y posteriores, así haciendo una comparacion válida
+
+se utilizó la libreria (srvyr) para la configuracion de objetos de diseño complejo considerando factores de expansion, estratos y conglomerados
+PD: para la base 2009 se implementó el ajuste nest=TRUE debio a la estructura de cluster de ese año
+
+
+-----------------------------------analisis---------------------------------------
+
+
+para realizar los analisis recomiendo evitar subir las bases de datos brutas, en su lugar, utilizar los archivos directamente procesados.
+
+ejemplo: data_2022 <- readRDS("input/data/proc/data_preparada_2022.rds")
+
+tambien, el script del analisis en un script nuevo script aparte, solamente uno para que se pueda hacer una tabla con todos los resultados y no vean probemlas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
