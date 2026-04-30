@@ -1,0 +1,16 @@
+# DATOS PESADOS (recomendacion Gemini)
+# Ignoramos la base original de la CASEN porque pesa demasiado
+input/data-orig/
+
+# -BASURA DE R Y RSTUDIO (No se sube) 
+# Estos archivos solo ensucian 
+.Rhistory
+.RData
+.RDataTmp
+.Rproj.user/
+.Rapp.history
+
+# Bloquea cualquier archivo de datos pesado por si acaso
+*.dta
+*.sav
+*.csv
