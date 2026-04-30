@@ -16,7 +16,6 @@ proyecto-casen-grupo7/
  |- .gitignore
  |- .vscode/
  |  |- settings.json
- |- 05_preparacion_2011.R
  |- README.md
  |- index.html
  |- index.pdf
@@ -45,6 +44,7 @@ proyecto-casen-grupo7/
  |  |- 01b_analisis_2022.R
  |  |- 02a_preparacion_2017.R
  |  |- 04a_preparacion_2013.R
+ |  |- 05_preparacion_2011.R
  |  |- 06_preparacion_2009.R
  |  |- 3a_preparacion_2015.R
  |  |- README-prod.md
