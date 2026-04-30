@@ -16,7 +16,6 @@ proyecto-casen-grupo7/
  |- .gitignore
  |- .vscode/
  |  |- settings.json
- |- 3a_preparacion_2015.R
  |- README.md
  |- index.html
  |- index.pdf
@@ -26,6 +25,7 @@ proyecto-casen-grupo7/
  |  |- data/
  |  |  |- original/
  |  |  |- proc/
+ |  |  |  |- data_preparada_2013.rds
  |  |  |  |- data_preparada_2015.rds
  |  |  |  |- data_preparada_2017.rds
  |  |  |  |- data_preparada_2022.rds
@@ -41,6 +41,8 @@ proyecto-casen-grupo7/
  |  |- 01a_preparacion_2022.R
  |  |- 01b_analisis_2022.R
  |  |- 02a_preparacion_2017.R
+ |  |- 04a_preparacion_2013.R
+ |  |- 3a_preparacion_2015.R
  |  |- README-prod.md
  |  |- casen2022.R
  |  |- prod_analysis.Rmd
