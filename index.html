@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
@@ -117,7 +152,7 @@ div.csl-indent {
       <div>
       <div class="quarto-title-meta-heading">Fecha de publicación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">29 de abril de 2026</p>
+        <p class="date">2 de mayo de 2026</p>
       </div>
     </div>
     
@@ -158,9 +193,9 @@ div.csl-indent {
 <section id="selección-de-artículoreporte" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Selección de artículo/reporte</h1>
 <ul>
-<li>Referencia del artículo seleccionado</li>
-<li>Breve resumen del artículo seleccionado</li>
-<li>Justificación de la selección del artículo</li>
+<li>Observatorio Social - Ministerio de Desarrollo Social y Familia. (s. f.). https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022</li>
+<li>La encuesta seleccionada corresponde a la encuesta CASEN realizada en el año 2022 por el Ministerio de Desarrollo Social y Familia. En ella se recopilan datos de diversos aspectos socioeconómicos de la población chilena, especialmente de grupos prioritarios y/o en situación de pobreza. Casen (2022)</li>
+<li>La selección de este artículo se debe a ahondar en la reproductibilidad de los datos, análisis y graficos que se presentan en el informe de la encuesta CASEN 2022. En ella, se visualizan datos longitudinales en los que se muestra la evolución de la Indicencia de la pobreza y de la pobreza extrema en la población chilena, entre los años 2006 a 2022.</li>
 </ul>
 </section>
 <section id="evaluación-de-reproducibilidad" class="level1" data-number="2">
@@ -178,6 +213,16 @@ div.csl-indent {
 <p>Seleccionar un resultado específico del artículo (por ejemplo, una tabla de resultados o una figura) y tratar de reproducirlo utilizando los datos y el código proporcionados. Documentar el proceso de reproducción, incluyendo cualquier dificultad encontrada y cómo se resolvió.</p>
 <section id="resultado-a-reproducir" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="resultado-a-reproducir"><span class="header-section-number">3.1</span> Resultado a reproducir</h2>
+<div id="fig-original" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="input/images/grafico_casen_pobreza.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
+</figcaption>
+</figure>
+</div>
 <ul>
 <li>Imagen de tabla(s), figura(s) o resultado específico del artículo seleccionado, junto a una breve descripción.</li>
 </ul>
@@ -189,6 +234,55 @@ div.csl-indent {
 </ul>
 <section id="procesamiento" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="procesamiento"><span class="header-section-number">3.2.1</span> Procesamiento</h3>
+<p>Partimos cargando las librerias necesarias para realizar el procesamiento de datos.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(srvyr)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>con este codigo, lo que hacemos es evitar que el calculo de varianza falle en estratos pequeños.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">survey.lonely.psu =</span> <span class="st">"adjust"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>En esta parte creamos una función para estandarizar el proceso en todos los años de la serie</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Show the code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval:FALSE</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo:TRUE</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>calcular_pobreza_oficial <span class="ot">&lt;-</span> <span class="cf">function</span>(ruta_dta, anio, <span class="at">v_ids =</span> <span class="st">"varunit"</span>, <span class="at">v_strata =</span> <span class="st">"varstrat"</span>) {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">"Procesando resultados oficiales año:"</span>, anio, <span class="st">"...</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  base <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(ruta_dta)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># limpieza estandar</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> base <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(pobreza_2013), <span class="sc">!</span><span class="fu">is.na</span>(expr), expr <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filtro opcional: Solo si la variable de parentesco existe, excluimos servicio doméstico</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">pobreza_cat =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      pobreza_2013 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="st">"Pobreza extrema"</span>,</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      pobreza_2013 <span class="sc">==</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">"Pobreza no extrema"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>      pobreza_2013 <span class="sc">==</span> <span class="dv">3</span> <span class="sc">~</span> <span class="st">"No pobres"</span>,</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    )) <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as_survey_design</span>(<span class="at">ids =</span> <span class="sc">!!</span><span class="fu">sym</span>(v_ids), <span class="at">strata =</span> <span class="sc">!!</span><span class="fu">sym</span>(v_strata), <span class="at">weights =</span> expr, <span class="at">nest =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(pobreza_cat) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">porcentaje =</span> <span class="fu">survey_mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">ano =</span> <span class="fu">as.character</span>(anio))</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultado)</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
 <ul>
 <li><p>Incluye el código utilizado para procesar los datos, junto con una explicación de cada paso.</p></li>
 <li><p>Los datos originales deben ser llamados desde input/data/original, el código de procesamiento se debe incluir en este mismo archivo (reporte-repro.qmd).</p></li>

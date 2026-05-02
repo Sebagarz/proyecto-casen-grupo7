@@ -21,6 +21,10 @@ affiliations:
 date: today
 lang: "es"
 fontsize: 13pt
+execute:
+  echo: true      
+  warning: false   
+  message: false
 format:
   html:
     code-fold: true
@@ -77,9 +81,13 @@ Análisis detallado del artículo seleccionado, evaluando los siguientes aspecto
 
 # Análisis reproducible
 
+
+
 Seleccionar un resultado específico del artículo (por ejemplo, una tabla de resultados o una figura) y tratar de reproducirlo utilizando los datos y el código proporcionados. Documentar el proceso de reproducción, incluyendo cualquier dificultad encontrada y cómo se resolvió.
 
 ## Resultado a reproducir
+
+![Gráfico Original: Incidencia de la pobreza (MDSF)](input/images/grafico_casen_pobreza.png){#fig-original}
 
 - Imagen de tabla(s), figura(s) o resultado específico del artículo seleccionado, junto a una breve descripción.
 
@@ -88,6 +96,60 @@ Seleccionar un resultado específico del artículo (por ejemplo, una tabla de re
 - Descripción detallada del proceso seguido para reproducir el resultado seleccionado, incluyendo los pasos realizados, las herramientas utilizadas, y cualquier ajuste necesario para lograr la reproducción. Incluye las siguientes sub secciones:
 
 ### Procesamiento
+
+
+Partimos cargando las librerias necesarias para realizar el procesamiento de datos.
+```{r}
+#| label: procesamiento-datos
+#| eval: false
+#| echo: true
+library(haven)
+library(dplyr)
+library(srvyr)
+library(ggplot2)
+
+```
+
+con este codigo, lo que hacemos es evitar que el calculo de varianza falle en estratos pequeños.
+
+```{r}
+
+#| eval: false
+#| echo: true
+options(survey.lonely.psu = "adjust")
+```
+
+En esta parte creamos una función para estandarizar el proceso en todos los años de la serie
+
+```{r}
+
+#| eval:FALSE
+#| echo:TRUE
+calcular_pobreza_oficial <- function(ruta_dta, anio, v_ids = "varunit", v_strata = "varstrat") {
+  
+  cat("Procesando resultados oficiales año:", anio, "...\n")
+  base <- read_dta(ruta_dta)
+  
+  # limpieza estandar
+  resultado <- base %>%
+    filter(!is.na(pobreza_2013), !is.na(expr), expr > 0) %>%
+    # filtro opcional: Solo si la variable de parentesco existe, excluimos servicio doméstico
+    mutate(pobreza_cat = case_when(
+      pobreza_2013 == 1 ~ "Pobreza extrema",
+      pobreza_2013 == 2 ~ "Pobreza no extrema",
+      pobreza_2013 == 3 ~ "No pobres",
+      TRUE ~ NA_character_
+    )) %>%
+    as_survey_design(ids = !!sym(v_ids), strata = !!sym(v_strata), weights = expr, nest = TRUE) %>%
+    group_by(pobreza_cat) %>%
+    summarize(porcentaje = survey_mean(na.rm = TRUE) * 100) %>%
+    mutate(ano = as.character(anio))
+  
+  return(resultado)
+}
+
+```
+
 
 - Incluye el código utilizado para procesar los datos, junto con una explicación de cada paso. 
 

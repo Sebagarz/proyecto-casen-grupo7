@@ -53,14 +53,21 @@ ggplot(tabla_final, aes(x = ano, y = porcentaje, fill = pobreza_cat)) +
 
 
 
-saveRDS(res_09, "output/res_09.rds")
-saveRDS(res_11, "output/res_11.rds")
-saveRDS(res_13, "output/res_13.rds")
-saveRDS(res_15, "output/res_15.rds")
-saveRDS(res_17, "output/res_17.rds")
-saveRDS(res_22, "output/res_22.rds")
+ggsave("output/graphs/grafico_evolucion_pobreza.png", 
+       width = 10, 
+       height = 7, 
+       dpi = 300)
 
-cat("¡Resultados oficiales guardados en la carpeta /output/!")
+#guardamos rds para evitar procesar todas las bases brutas
+
+saveRDS(res_09, "input/data/proc/res_09.rds")
+saveRDS(res_11, "input/data/proc/res_11.rds")
+saveRDS(res_13, "input/data/proc/res_13.rds")
+saveRDS(res_15, "input/data/proc/res_15.rds")
+saveRDS(res_17, "input/data/proc/res_17.rds")
+saveRDS(res_22, "input/data/proc/res_22.rds")
+
+
 
 
 
