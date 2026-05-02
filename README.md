@@ -31,18 +31,20 @@ proyecto-casen-grupo7/
  |  |  |  |- data_preparada_2015.rds
  |  |  |  |- data_preparada_2017.rds
  |  |  |  |- data_preparada_2022.rds
+ |  |  |  |- res_09.rds
+ |  |  |  |- res_11.rds
+ |  |  |  |- res_13.rds
+ |  |  |  |- res_15.rds
+ |  |  |  |- res_17.rds
+ |  |  |  |- res_22.rds
  |  |- images/
+ |  |  |- grafico_casen_pobreza.png
  |  |- original-code/
  |- libs/
  |  |- ocs.scss
  |- output/
  |  |- graphs/
- |  |- res_09.rds
- |  |- res_11.rds
- |  |- res_13.rds
- |  |- res_15.rds
- |  |- res_17.rds
- |  |- res_22.rds
+ |  |  |- grafico_evolucion_pobreza.png
  |  |- tables/
  |  |  |- tabla_pobreza_2022.rds
  |- processing/
