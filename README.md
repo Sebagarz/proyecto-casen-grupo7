@@ -37,22 +37,30 @@ proyecto-casen-grupo7/
  |  |- ocs.scss
  |- output/
  |  |- graphs/
+ |  |- res_09.rds
+ |  |- res_11.rds
+ |  |- res_13.rds
+ |  |- res_15.rds
+ |  |- res_17.rds
+ |  |- res_22.rds
  |  |- tables/
  |  |  |- tabla_pobreza_2022.rds
  |- processing/
  |  |- 01a_preparacion_2022.R
- |  |- 01b_analisis_2022.R
  |  |- 02a_preparacion_2017.R
  |  |- 04a_preparacion_2013.R
  |  |- 05_preparacion_2011.R
  |  |- 06_preparacion_2009.R
  |  |- 3a_preparacion_2015.R
  |  |- README-prod.md
- |  |- casen2022.R
+ |  |- RESULTADO OFICIAL CON RDS.R
+ |  |- RESULTADOS OFICIALES CON DTA CARGADA.R
+ |  |- Script resultados final.R
  |  |- prod_analysis.Rmd
  |  |- prod_analysis.html
  |  |- prod_prep.Rmd
  |  |- prod_prep.html
+ |  |- script resultados.R
  |- proyecto-casen-grupo7.Rproj
  |- scripts/
  |  |- update-working-tree.sh
