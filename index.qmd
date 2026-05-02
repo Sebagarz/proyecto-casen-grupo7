@@ -60,15 +60,17 @@ csl: "input/bib/apa6.csl"
 
 # Selección de artículo/reporte
 
-- Referencia del artículo seleccionado
-- Breve resumen del artículo seleccionado
-- Justificación de la selección del artículo
+- Observatorio Social - Ministerio de Desarrollo Social y Familia. (s. f.). https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022
+- La encuesta seleccionada corresponde a la encuesta CASEN realizada en el año 2022 por el Ministerio de Desarrollo Social y Familia. En ella se recopilan datos de diversos aspectos socioeconómicos de la población chilena, especialmente de grupos prioritarios y/o en situación de pobreza. Casen (2022) 
+- La selección de este artículo se debe a ahondar en la reproductibilidad de los datos, análisis y graficos que se presentan en el informe de la encuesta CASEN 2022. En ella, se visualizan datos longitudinales en los que se muestra la evolución de la Indicencia de la pobreza y de la pobreza extrema en la población chilena, entre los años 2006 a 2022. 
+
 
 # Evaluación de reproducibilidad
 
 Análisis detallado del artículo seleccionado, evaluando los siguientes aspectos:
 
-  -   **Disponibilidad de datos**: ¿El artículo proporciona acceso a los datos utilizados en el estudio? Si no es así, ¿qué dificultades se enfrentaron para obtener los datos?
+  -   **Disponibilidad de datos**: 
+  ¿El artículo proporciona acceso a los datos utilizados en el estudio? Si no es así, ¿qué dificultades se enfrentaron para obtener los datos?
   -   **Disponibilidad de código**: ¿El artículo proporciona acceso al código utilizado para el análisis? Si es así, ¿cómo se puede acceder?
   -   **Documentación**: ¿El artículo incluye una descripción clara de los métodos y procedimientos utilizados en el estudio? ¿Es suficiente para que otro investigador pueda replicar el estudio?
   -   **Transparencia**: ¿El artículo proporciona información sobre los posibles conflictos de interés, financiamiento, y otros aspectos relacionados con la transparencia de la investigación?   
