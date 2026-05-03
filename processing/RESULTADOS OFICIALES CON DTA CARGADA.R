@@ -1,3 +1,4 @@
+
 library(haven)
 library(dplyr)
 library(srvyr)
@@ -50,7 +51,6 @@ ggplot(tabla_final, aes(x = ano, y = porcentaje, fill = pobreza_cat)) +
   scale_fill_manual(values = c("Pobreza extrema" = "#003366", "Pobreza no extrema" = "#3399FF")) +
   theme_minimal() +
   labs(title = "Evolución de la Pobreza en Chile (2009-2022)", caption = "Fuente: Ministerio de Desarrollo Social y Familia")
-
 
 
 ggsave("output/graphs/grafico_evolucion_pobreza.png", 

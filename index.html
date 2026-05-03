@@ -152,7 +152,7 @@ div.csl-indent {
       <div>
       <div class="quarto-title-meta-heading">Fecha de publicación</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">2 de mayo de 2026</p>
+        <p class="date">3 de mayo de 2026</p>
       </div>
     </div>
     
@@ -202,17 +202,17 @@ div.csl-indent {
 <h1 data-number="2"><span class="header-section-number">2</span> Evaluación de reproducibilidad</h1>
 <p>Análisis detallado del artículo seleccionado, evaluando los siguientes aspectos:</p>
 <ul>
-<li><strong>Disponibilidad de datos</strong>: ¿El artículo proporciona acceso a los datos utilizados en el estudio? Si no es así, ¿qué dificultades se enfrentaron para obtener los datos?</li>
-<li><strong>Disponibilidad de código</strong>: ¿El artículo proporciona acceso al código utilizado para el análisis? Si es así, ¿cómo se puede acceder?</li>
-<li><strong>Documentación</strong>: ¿El artículo incluye una descripción clara de los métodos y procedimientos utilizados en el estudio? ¿Es suficiente para que otro investigador pueda replicar el estudio?</li>
-<li><strong>Transparencia</strong>: ¿El artículo proporciona información sobre los posibles conflictos de interés, financiamiento, y otros aspectos relacionados con la transparencia de la investigación?</li>
+<li><p><strong>Disponibilidad de datos</strong>: El artículo proporciona el acceso a los documentos de la encuesta CASEN 2022, en donde se pueden encontrar los datos armonizados utilizados en el estudio. El gráfico seleccionado comprende datos longitudinales de los años 2006, 2009, 2011, 2013, 2015, 2017, 2020 y 2022. Sin embargo, el link señalado en el artículo no comprende los datos del año 2020, y los datos del año 2006 no están armonizados para ser comparables con la metodología de 2013.</p></li>
+<li><p><strong>Disponibilidad de código</strong>: El artículo elegido no proporciona un acceso al código utilizado para el análisis. Sin embargo, al organizar una sesión de ayudantía con el profesor a cargo del electivo de Ciencia Social Abierta, se logró contactar con Dafne Jaime Vargas, quien actualmente trabaja en el Ministerio de Desarrollo Social de Chile, la cual a través de un correo nos dio información valiosa en torno a las bases de datos armonizadas de la encuesta CASEN 2022, construcción de indicadores y cómo replicar las salidas de resultados del Observatorio. Con lo anterior, se logró crear un código que refleja la limpieza necesaria de las bases de datos utilizadas (2009 – 2022) y el procesamiento de datos hasta el gráfico final replicado.</p></li>
+<li><p><strong>Documentación</strong>: El artículo elegido para la reproducción de resultados cumple con su rol de difusión de resultados, pero no es suficiente como documento metodológico para la reproducción independiente. Para una replicación real desde las bases de datos se necesita obligatoriamente consultar las Notas Técnicas complementarias y el Libro de códigos de la base de datos pública de CASEN 2022 (y años anteriores), que están disponibles en el Observatorio Social del Ministerio, pero que no forman parte del artículo seleccionado.</p></li>
+<li><p><strong>Transparencia</strong>: El artículo no especifica financiamiento, tampoco posibles conflictos de interés. Sin embargo, se transparentan las instituciones involucradas, así como también el panel de expertos y expertas. Además, se transparenta el proceso de producción en donde se señalan los aportes de los organismos al artículo.</p></li>
 </ul>
 </section>
 <section id="análisis-reproducible" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Análisis reproducible</h1>
-<p>Seleccionar un resultado específico del artículo (por ejemplo, una tabla de resultados o una figura) y tratar de reproducirlo utilizando los datos y el código proporcionados. Documentar el proceso de reproducción, incluyendo cualquier dificultad encontrada y cómo se resolvió.</p>
 <section id="resultado-a-reproducir" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="resultado-a-reproducir"><span class="header-section-number">3.1</span> Resultado a reproducir</h2>
+<p>El grafico a reproducir es el siguinte:</p>
 <div id="fig-original" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-original-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -223,15 +223,9 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 </figcaption>
 </figure>
 </div>
-<ul>
-<li>Imagen de tabla(s), figura(s) o resultado específico del artículo seleccionado, junto a una breve descripción.</li>
-</ul>
 </section>
 <section id="proceso-de-reproducción" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="proceso-de-reproducción"><span class="header-section-number">3.2</span> Proceso de reproducción</h2>
-<ul>
-<li>Descripción detallada del proceso seguido para reproducir el resultado seleccionado, incluyendo los pasos realizados, las herramientas utilizadas, y cualquier ajuste necesario para lograr la reproducción. Incluye las siguientes sub secciones:</li>
-</ul>
 <section id="procesamiento" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="procesamiento"><span class="header-section-number">3.2.1</span> Procesamiento</h3>
 <p>Partimos cargando las librerias necesarias para realizar el procesamiento de datos.</p>
@@ -357,10 +351,6 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(res_22, <span class="st">"input/data/proc/res_22.rds"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<ul>
-<li><p>Incluye el código utilizado para procesar los datos, junto con una explicación de cada paso.</p></li>
-<li><p>Los datos originales deben ser llamados desde input/data/original, el código de procesamiento se debe incluir en este mismo archivo (reporte-repro.qmd).</p></li>
-</ul>
 </section>
 <section id="reproducción" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="reproducción"><span class="header-section-number">3.2.2</span> Reproducción</h3>
@@ -368,16 +358,19 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descomenta la siguiente línea si no tienes instalados los paquetes:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("dplyr", "ggplot2"))</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar los resultados anteriormente procesados.</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>res_09 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_09.rds"</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>res_11 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_11.rds"</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>res_13 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_13.rds"</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>res_15 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_15.rds"</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>res_17 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_17.rds"</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>res_22 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_22.rds"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar los resultados anteriormente procesados.</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>res_09 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_09.rds"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>res_11 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_11.rds"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>res_13 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_13.rds"</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>res_15 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_15.rds"</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>res_17 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_17.rds"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>res_22 <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"input/data/proc/res_22.rds"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>Una vez cargamos los datos, consolidamos nuevamente la tabla final hecha anteriormente y aplicamos la estetica para recrear el diseño del articulo original</p>
@@ -421,31 +414,34 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 </section>
 <section id="conclusiones" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Conclusiones</h1>
-<p>Basándose en el análisis realizado, escriban una conclusión sobre el nivel de reproducibilidad del artículo seleccionado.</p>
+<p>Tras el analisis realizado, se concluye que articulo presenta un nivel de reproducibilidad medio-alto, ya que si bien los datos de la encuesta casen son de acceso público, la falta de scripts originales impone una carga elevada para el investigador independiente. Se logró una replica exacta de la serie historica de pobreza (2009-2022) sacando el año 2006 debido a que no son compatibles con la nueva metodología de la casen, y el año 2020, ya que no tenemos acceso a la base armonizada. Para finalizar, el uso de herramientas como Rstudio y VS Code, junto con la optimización de los datos en formato .rds fueron de suma importancia para superar barrerar de hardware al cargar datos de gran volumen.</p>
 </section>
 <section id="recomendaciones" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Recomendaciones</h1>
-<p>Recomendaciones para mejorar la reproducibilidad del artículo, si es necesario.</p>
+<ul>
+<li>Transparentar financiamiento</li>
+<li>Señalar posibles conflictos de interés</li>
+<li>Proporcionar datos armonizados de los años 2006 y 2020.</li>
+<li>Realizar notas técnicas en donde se especifiquen cambios m<br>
+metodológicos de años anteriores, con tal de replicar resultados (en el artículo solo se menciona el cambio metodológico del año 2022).</li>
+<li>Publicar el código utilizado para la creación de tablas y gráficos<br>
+(de orden comparativo o no).</li>
+</ul>
 </section>
 <section id="referencias" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Referencias</h1>
 <div id="refs" role="list">
-
+<p>Observatorio Social. (2023). Encuesta Casen 2022. Ministerio de Desarrollo Social y Familia. https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022</p>
 </div>
 </section>
 <section id="apéndice" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Apéndice</h1>
 <section id="material-suplementario" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="material-suplementario"><span class="header-section-number">7.1</span> Material suplementario</h2>
-<ul>
-<li>Incluyan aquí detalles metodológicos adicionales, en caso de ser necesario</li>
-</ul>
+<p>Nota sobre el uso de IA: Este proyecto integró el uso de IA para la asistencia en la programación en Rstudio. La herramienta permitió agilizar el tratamiento de microdatos y asegurar la corrercta renderización del archivo final en VS Code.</p>
 </section>
 <section id="código" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="código"><span class="header-section-number">7.2</span> Código</h2>
-<ul>
-<li>Incluir acá el código original, en caso de estar disponible.</li>
-</ul>
 </section>
 </section>
 
