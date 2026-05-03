@@ -97,8 +97,8 @@ Seleccionar un resultado específico del artículo (por ejemplo, una tabla de re
 
 ### Procesamiento
 
-
 Partimos cargando las librerias necesarias para realizar el procesamiento de datos.
+
 ```{r}
 #| label: procesamiento-datos
 #| eval: false
@@ -110,10 +110,9 @@ library(ggplot2)
 
 ```
 
-con este codigo, lo que hacemos es evitar que el calculo de varianza falle en estratos pequeños.
+Con este codigo, lo que hacemos es evitar que el calculo de varianza falle en estratos pequeños.
 
 ```{r}
-
 #| eval: false
 #| echo: true
 options(survey.lonely.psu = "adjust")
@@ -122,33 +121,128 @@ options(survey.lonely.psu = "adjust")
 En esta parte creamos una función para estandarizar el proceso en todos los años de la serie
 
 ```{r}
-
-#| eval:FALSE
-#| echo:TRUE
+#| eval: false
+#| echo: true
 calcular_pobreza_oficial <- function(ruta_dta, anio, v_ids = "varunit", v_strata = "varstrat") {
   
   cat("Procesando resultados oficiales año:", anio, "...\n")
   base <- read_dta(ruta_dta)
   
-  # limpieza estandar
+
+```
+
+
+Acá comienza la limpieza y preparación de las variables. Acá se introduce un filtro el cual sirve para eliminar casos sin datos de pobreza o con factor de expansión cero.
+
+```{r}
+#| eval: false
+#| echo: true
+# limpieza estandar
   resultado <- base %>%
     filter(!is.na(pobreza_2013), !is.na(expr), expr > 0) %>%
     # filtro opcional: Solo si la variable de parentesco existe, excluimos servicio doméstico
-    mutate(pobreza_cat = case_when(
+
+```
+
+En este punto hay una recodificación de las variables, ya que transformamos los códigos númericos en categorias descriptivas, deacuerdo a la metodologia de 2013.
+
+```{r}
+#| eval: false
+#| echo: true
+# mutate(pobreza_cat = case_when(
       pobreza_2013 == 1 ~ "Pobreza extrema",
       pobreza_2013 == 2 ~ "Pobreza no extrema",
       pobreza_2013 == 3 ~ "No pobres",
       TRUE ~ NA_character_
-    )) %>%
+    )) %>% 
+
+```
+
+Este es un paso importante, debido a que con este paso, hacemos que los datos representena a todo Chile.
+Incorpora pesos (expr), conglomerados (ids), y estratificación (estrata)
+```{r}
+#| eval: false
+#| echo: true
     as_survey_design(ids = !!sym(v_ids), strata = !!sym(v_strata), weights = expr, nest = TRUE) %>%
-    group_by(pobreza_cat) %>%
+
+```
+
+Acá calculamos la media ponderada (porcentaje) por categoría.
+
+```{r}
+#| eval: false
+#| echo: true
+group_by(pobreza_cat) %>%
     summarize(porcentaje = survey_mean(na.rm = TRUE) * 100) %>%
-    mutate(ano = as.character(anio))
+```
+
+Finalizandoe este bloque, añadimos la columna de año para la unión final de la serie.
+```{r}
+#| eval: false
+#| echo: true
+ mutate(ano = as.character(anio))
   
   return(resultado)
 }
+```
+
+
+Tras finalizar la liempieza y recodificación, se procesan las bases originales (.dta)
+Acá, la base de datos de casen 2009 usa nombres de variables distintos (segmento/estrato)
+
+```{r}
+#| eval: false
+#| echo: true
+res_22 <- calcular_pobreza_oficial("input/data/original/casen_2022.dta", 2022)
+res_17 <- calcular_pobreza_oficial("input/data/original/casen_2017.dta", 2017)
+res_15 <- calcular_pobreza_oficial("input/data/original/casen_2015.dta", 2015)
+res_13 <- calcular_pobreza_oficial("input/data/original/casen_2013.dta", 2013)
+res_11 <- calcular_pobreza_oficial("input/data/original/casen_2011.dta", 2011)
+res_09 <- calcular_pobreza_oficial("input/data/original/casen_2009.dta", 2009, "segmento", "estrato")
+```
+
+Unimos todos los años y filtramos a la población en pobreza y ordenamos los factores para el gráfico.
+
+```{r}
+#| eval: false
+#| echo: true
+
+tabla_final <- bind_rows(res_09, res_11, res_13, res_15, res_17, res_22) %>%
+  filter(pobreza_cat != "No pobres") %>%
+  mutate(pobreza_cat = factor(pobreza_cat, levels = c("Pobreza no extrema", "Pobreza extrema")))
 
 ```
+
+finalizando ya el apartado de procesamiento, hacemos el grafico con la tabla final y guardamos los resultados. Tambien se guardan los RDS para saltar la parte de limpieza y que simplemente salga el grafico con los resultados.
+```{r}
+#| eval: false
+#| echo: true
+
+ggplot(tabla_final, aes(x = ano, y = porcentaje, fill = pobreza_cat)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.7) +
+  geom_text(aes(label = paste0(round(porcentaje, 1), "%")), 
+            position = position_stack(vjust = 0.5), color = "white", fontface = "bold") +
+  scale_fill_manual(values = c("Pobreza extrema" = "#003366", "Pobreza no extrema" = "#3399FF")) +
+  theme_minimal() +
+  labs(title = "Evolución de la Pobreza en Chile (2009-2022)", caption = "Fuente: Ministerio de Desarrollo Social y Familia")
+
+
+ggsave("output/graphs/grafico_evolucion_pobreza.png", 
+       width = 10, 
+       height = 7, 
+       dpi = 300)
+
+#guardamos rds para evitar procesar todas las bases brutas
+
+saveRDS(res_09, "input/data/proc/res_09.rds")
+saveRDS(res_11, "input/data/proc/res_11.rds")
+saveRDS(res_13, "input/data/proc/res_13.rds")
+saveRDS(res_15, "input/data/proc/res_15.rds")
+saveRDS(res_17, "input/data/proc/res_17.rds")
+saveRDS(res_22, "input/data/proc/res_22.rds")
+
+```
+
 
 
 - Incluye el código utilizado para procesar los datos, junto con una explicación de cada paso. 
@@ -157,7 +251,56 @@ calcular_pobreza_oficial <- function(ruta_dta, anio, v_ids = "varunit", v_strata
 
 ### Reproducción
 
-- Generación de tabla o figura a reproducir.
+Para la generación de grafico partimos cargando las librerias  y los rds ya guardados anteriormente.
+
+```{r}
+#| eval: true
+#| echo: true
+
+library(dplyr)
+library(ggplot2)
+
+# Cargar los resultados anteriormente procesados.
+res_09 <- readRDS("input/data/proc/res_09.rds")
+res_11 <- readRDS("input/data/proc/res_11.rds")
+res_13 <- readRDS("input/data/proc/res_13.rds")
+res_15 <- readRDS("input/data/proc/res_15.rds")
+res_17 <- readRDS("input/data/proc/res_17.rds")
+res_22 <- readRDS("input/data/proc/res_22.rds")
+
+```
+
+Una vez cargamos los datos, consolidamos nuevamente la tabla final hecha anteriormente y aplicamos la estetica para recrear el diseño del articulo original 
+
+```{r}
+#| eval: true
+#| echo: true
+
+tabla_final <- bind_rows(res_09, res_11, res_13, res_15, res_17, res_22) %>%
+  filter(pobreza_cat != "No pobres") %>%
+  mutate(pobreza_cat = factor(pobreza_cat, 
+                              levels = c("Pobreza no extrema", "Pobreza extrema")))
+
+#gráfico Final 
+ggplot(tabla_final, aes(x = ano, y = porcentaje, fill = pobreza_cat)) +
+  geom_bar(stat = "identity", position = "stack", width = 0.7) +
+  # Etiquetas con el primer decimal oficial
+  geom_text(aes(label = paste0(round(porcentaje, 1), "%")), 
+            position = position_stack(vjust = 0.5), 
+            color = "white", fontface = "bold", size = 3.5) +
+  # Colores institucionales definidos por el equipo
+  scale_fill_manual(values = c("Pobreza extrema" = "#003366", 
+                               "Pobreza no extrema" = "#3399FF")) +
+  labs(title = "Evolución de la Pobreza en Chile (2009-2022)",
+       subtitle = "Porcentaje de personas en situación de pobreza por ingresos",
+       x = "Año de la Encuesta Casen",
+       y = "Porcentaje (%)",
+       fill = "Categoría",
+       caption = "Fuente: Elaboración propia basada en microdatos Casen (MDSF)") +
+  theme_minimal() +
+  theme(legend.position = "bottom", plot.title = element_text(face = "bold"))
+```
+
 
 # Conclusiones
 

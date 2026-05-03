@@ -1,6 +1,6 @@
 # DATOS PESADOS (recomendacion Gemini)
 # Ignoramos la base original de la CASEN porque pesa demasiado
-input/data-orig/
+input/data/original/
 
 # -BASURA DE R Y RSTUDIO (No se sube) 
 # Estos archivos solo ensucian 
