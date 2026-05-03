@@ -1,18 +1,18 @@
 ---
 title: "Reporte de Reproducibilidad"
 subtitle: "Artículo: CASEN 2022: Baja la pobreza por ingresos y la pobreza multidimensional en Chile.
- <br><a href='https://github.com/data-soc/template-repro' target='_blank' ><i class='bi bi-github'></i></a>" # reemplazar con dirección al repositorio del proyecto
+ <br><a href='https://github.com/Sebagarz/proyecto-casen-grupo7' target='_blank' ><i class='bi bi-github'></i></a>" # reemplazar con dirección al repositorio del proyecto
 author:
   - name: Catalina Parra A.
-    email: mail@mail.com 
+    email: catalina.parra.@ug.uchile.cl 
     affiliations:
       - ref: 1
   - name: Juan Gutiérrez G.
-    email: mail@mail.com 
+    email: juan.gutierrez.1@ug.uchile.cl 
     affiliations:
       - ref: 1
   - name: Eduardo Ortiz A.
-    email: mail@mail.com 
+    email: eduardoortiz@ug.uchile.cl
     affiliations:
       - ref: 1 
 affiliations: 
