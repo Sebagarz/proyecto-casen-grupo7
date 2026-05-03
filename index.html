@@ -227,7 +227,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <h2 data-number="3.2" class="anchored" data-anchor-id="proceso-de-reproducción"><span class="header-section-number">3.2</span> Proceso de reproducción</h2>
 <section id="procesamiento" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="procesamiento"><span class="header-section-number">3.2.1</span> Procesamiento</h3>
-<p>Partimos cargando las librerias necesarias para realizar el procesamiento de datos.</p>
+<p>Iniciamos cargando las librerias necesarias para realizar el procesamiento de datos.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -264,7 +264,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># filtro opcional: Solo si la variable de parentesco existe, excluimos servicio doméstico</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>En este punto hay una recodificación de las variables, ya que transformamos los códigos númericos en categorias descriptivas, deacuerdo a la metodologia de 2013.</p>
+<p>En este punto hay una recodificación de las variables, ya que transformamos los códigos númericos en categorias descriptivas, conforme a la metodologia de 2013.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -276,7 +276,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">))</span> <span class="sc">%&gt;%</span> </span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Este es un paso importante, debido a que con este paso, hacemos que los datos representena a todo Chile. Incorpora pesos (expr), conglomerados (ids), y estratificación (estrata)</p>
+<p>Este es un paso importante, debido a que con él hacemos que los datos representen lo señalado por los encuestados en la encuesta. Incorpora pesos (expr), conglomerados (ids), y estratificación (estrata)</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -291,7 +291,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">porcentaje =</span> <span class="fu">survey_mean</span>(<span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">*</span> <span class="dv">100</span>) <span class="sc">%&gt;%</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Finalizandoe este bloque, añadimos la columna de año para la unión final de la serie.</p>
+<p>Finalizando este bloque, añadimos la columna de año para la unión final de la serie.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -301,7 +301,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="er">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Tras finalizar la liempieza y recodificación, se procesan las bases originales (.dta) Acá, la base de datos de casen 2009 usa nombres de variables distintos (segmento/estrato)</p>
+<p>Tras finalizar la limpieza y recodificación, se procesan las bases originales (.dta). Acá, la base de datos de CASEN 2009 usa nombres de variables distintos (segmento/estrato)</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -313,7 +313,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>res_09 <span class="ot">&lt;-</span> <span class="fu">calcular_pobreza_oficial</span>(<span class="st">"input/data/original/casen_2009.dta"</span>, <span class="dv">2009</span>, <span class="st">"segmento"</span>, <span class="st">"estrato"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<p>Unimos todos los años y filtramos a la población en pobreza y ordenamos los factores para el gráfico.</p>
+<p>Unimos todos los años, filtramos a la población en pobreza y ordenamos los factores para el gráfico.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -353,7 +353,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 </section>
 <section id="reproducción" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="reproducción"><span class="header-section-number">3.2.2</span> Reproducción</h3>
-<p>Para la generación de grafico partimos cargando las librerias y los rds ya guardados anteriormente.</p>
+<p>Para la generación de grafico iniciamos cargando las librerias y los rds ya guardados anteriormente.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Show the code</summary>
@@ -413,7 +413,7 @@ Figura&nbsp;1: Gráfico Original: Incidencia de la pobreza (MDSF)
 </section>
 <section id="conclusiones" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Conclusiones</h1>
-<p>Tras el analisis realizado, se concluye que articulo presenta un nivel de reproducibilidad medio-alto, ya que si bien los datos de la encuesta casen son de acceso público, la falta de scripts originales impone una carga elevada para el investigador independiente. Se logró una replica exacta de la serie historica de pobreza (2009-2022) sacando el año 2006 debido a que no son compatibles con la nueva metodología de la casen, y el año 2020, ya que no tenemos acceso a la base armonizada. Para finalizar, el uso de herramientas como Rstudio y VS Code, junto con la optimización de los datos en formato .rds fueron de suma importancia para superar barrerar de hardware al cargar datos de gran volumen.</p>
+<p>Tras el analisis realizado, se concluye que articulo presenta un nivel de reproducibilidad medio-alto, ya que si bien los datos de la encuesta casen son de acceso público, la falta de los scripts originales impone una carga elevada para el investigador independiente. Se logró una replica exacta de la serie historica de pobreza (2009-2022) exceptuando el año 2006 debido a que no son compatibles con la nueva metodología de la CASEN, y el año 2020, ya que no tenemos acceso a la base armonizada. Para finalizar, el uso de herramientas como Rstudio y VS Code, junto con la optimización de los datos en formato .rds fueron de suma importancia para superar barreras del hardware al cargar datos de gran volumen.</p>
 </section>
 <section id="recomendaciones" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Recomendaciones</h1>

@@ -1,6 +1,6 @@
 ---
 title: "Reporte de Reproducibilidad"
-subtitle: "Artículo: [título del artículo a reproducir]
+subtitle: "Artículo: CASEN 2022: Baja la pobreza por ingresos y la pobreza multidimensional en Chile.
  <br><a href='https://github.com/data-soc/template-repro' target='_blank' ><i class='bi bi-github'></i></a>" # reemplazar con dirección al repositorio del proyecto
 author:
   - name: Catalina Parra A.
