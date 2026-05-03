@@ -3,15 +3,15 @@ title: "Reporte de Reproducibilidad"
 subtitle: "Artículo: [título del artículo a reproducir]
  <br><a href='https://github.com/data-soc/template-repro' target='_blank' ><i class='bi bi-github'></i></a>" # reemplazar con dirección al repositorio del proyecto
 author:
-  - name: Autor 1
+  - name: Catalina Parra A.
     email: mail@mail.com 
     affiliations:
       - ref: 1
-  - name: Autor 2
+  - name: Juan Gutiérrez G.
     email: mail@mail.com 
     affiliations:
       - ref: 1
-  - name: Autor 3
+  - name: Eduardo Ortiz A.
     email: mail@mail.com 
     affiliations:
       - ref: 1 
@@ -71,7 +71,6 @@ csl: "input/bib/apa6.csl"
 
 # Evaluación de reproducibilidad
 
-Análisis detallado del artículo seleccionado, evaluando los siguientes aspectos:
 
   -   **Disponibilidad de datos**: 
    El artículo proporciona el acceso a los documentos de la encuesta CASEN 2022, en donde se pueden encontrar los datos armonizados utilizados en el estudio. 
