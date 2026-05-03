@@ -64,7 +64,7 @@ csl: "input/bib/apa6.csl"
 
 # Selección de artículo/reporte
 
-- Observatorio Social - Ministerio de Desarrollo Social y Familia. (s. f.). https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022
+- Observatorio Social. (2023). Encuesta Casen 2022. Ministerio de Desarrollo Social y Familia. https://observatorio.ministeriodesarrollosocial.gob.cl/encuesta-casen-2022
 - La encuesta seleccionada corresponde a la encuesta CASEN realizada en el año 2022 por el Ministerio de Desarrollo Social y Familia. En ella se recopilan datos de diversos aspectos socioeconómicos de la población chilena, especialmente de grupos prioritarios y/o en situación de pobreza. Casen (2022) 
 - La selección de este artículo se debe a ahondar en la reproductibilidad de los datos, análisis y graficos que se presentan en el informe de la encuesta CASEN 2022. En ella, se visualizan datos longitudinales en los que se muestra la evolución de la Indicencia de la pobreza y de la pobreza extrema en la población chilena, entre los años 2006 a 2022. 
 
@@ -306,11 +306,10 @@ Para finalizar, el uso de herramientas como Rstudio y VS Code, junto con la opti
 
 # Recomendaciones
 
-- Transparentar financiamiento
-- Señalar posibles conflictos de interés
+- Transparentar el financiamiento del proyecto, señalando las fuentes de financiamiento y su posible influencia en los resultados. 
+- Señalar posibles conflictos de interés que puedan existir entre los autores y las instituciones involucradas, para garantizar la transparencia y la confianza en los resultados presentados.
 - Proporcionar datos armonizados de los años 2006 y 2020.
-- Realizar notas técnicas en donde se especifiquen cambios m     
-  metodológicos de años anteriores, con tal de replicar resultados (en el artículo solo se menciona el cambio metodológico del año 2022).
+- Realizar notas técnicas en donde se especifiquen los cambios metodológicos de años anteriores con tal de replicar resultados (en el artículo solo se menciona el cambio metodológico del año 2022).
 - Publicar el código utilizado para la creación de tablas y gráficos  
   (de orden comparativo o no).
 
