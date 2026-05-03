@@ -95,7 +95,7 @@ El gráfico a reproducir es el siguiente:
 
 ### Procesamiento
 
-Partimos cargando las librerias necesarias para realizar el procesamiento de datos.
+Iniciamos cargando las librerias necesarias para realizar el procesamiento de datos.
 
 ```{r}
 #| label: procesamiento-datos
@@ -142,7 +142,7 @@ Acá comienza la limpieza y preparación de las variables. Acá se introduce un 
 
 ```
 
-En este punto hay una recodificación de las variables, ya que transformamos los códigos númericos en categorias descriptivas, deacuerdo a la metodologia de 2013.
+En este punto hay una recodificación de las variables, ya que transformamos los códigos númericos en categorias descriptivas, conforme a la metodologia de 2013.
 
 ```{r}
 #| eval: false
@@ -156,7 +156,7 @@ En este punto hay una recodificación de las variables, ya que transformamos los
 
 ```
 
-Este es un paso importante, debido a que con este paso, hacemos que los datos representena a todo Chile.
+Este es un paso importante, debido a que con él hacemos que los datos representen lo señalado por los encuestados en la encuesta.
 Incorpora pesos (expr), conglomerados (ids), y estratificación (estrata)
 ```{r}
 #| eval: false
@@ -174,7 +174,7 @@ group_by(pobreza_cat) %>%
     summarize(porcentaje = survey_mean(na.rm = TRUE) * 100) %>%
 ```
 
-Finalizandoe este bloque, añadimos la columna de año para la unión final de la serie.
+Finalizando este bloque, añadimos la columna de año para la unión final de la serie.
 ```{r}
 #| eval: false
 #| echo: true
@@ -185,8 +185,8 @@ Finalizandoe este bloque, añadimos la columna de año para la unión final de l
 ```
 
 
-Tras finalizar la liempieza y recodificación, se procesan las bases originales (.dta)
-Acá, la base de datos de casen 2009 usa nombres de variables distintos (segmento/estrato)
+Tras finalizar la limpieza y recodificación, se procesan las bases originales (.dta).
+Acá, la base de datos de CASEN 2009 usa nombres de variables distintos (segmento/estrato)
 
 ```{r}
 #| eval: false
@@ -199,7 +199,7 @@ res_11 <- calcular_pobreza_oficial("input/data/original/casen_2011.dta", 2011)
 res_09 <- calcular_pobreza_oficial("input/data/original/casen_2009.dta", 2009, "segmento", "estrato")
 ```
 
-Unimos todos los años y filtramos a la población en pobreza y ordenamos los factores para el gráfico.
+Unimos todos los años, filtramos a la población en pobreza y ordenamos los factores para el gráfico.
 
 ```{r}
 #| eval: false
@@ -244,7 +244,7 @@ saveRDS(res_22, "input/data/proc/res_22.rds")
 
 ### Reproducción
 
-Para la generación de grafico partimos cargando las librerias  y los rds ya guardados anteriormente.
+Para la generación de grafico iniciamos cargando las librerias  y los rds ya guardados anteriormente.
 
 ```{r}
 #| eval: true
@@ -300,9 +300,9 @@ ggplot(tabla_final, aes(x = ano, y = porcentaje, fill = pobreza_cat)) +
 
 # Conclusiones
 
-Tras el analisis realizado, se concluye que articulo presenta un nivel de reproducibilidad medio-alto, ya que si bien los datos de la encuesta casen son de acceso público, la falta de scripts originales impone una carga elevada para el investigador independiente.
-Se logró una replica exacta de la serie historica de pobreza (2009-2022) sacando el año 2006 debido a que no son compatibles con la nueva metodología de la casen, y el año 2020, ya que no tenemos acceso a la base armonizada. 
-Para finalizar, el uso de herramientas como Rstudio y VS Code, junto con la optimización de los datos en formato .rds fueron de suma importancia para superar barrerar de hardware al cargar datos de gran volumen.
+Tras el analisis realizado, se concluye que articulo presenta un nivel de reproducibilidad medio-alto, ya que si bien los datos de la encuesta casen son de acceso público, la falta de los scripts originales impone una carga elevada para el investigador independiente.
+Se logró una replica exacta de la serie historica de pobreza (2009-2022) exceptuando el año 2006 debido a que no son compatibles con la nueva metodología de la CASEN, y el año 2020, ya que no tenemos acceso a la base armonizada. 
+Para finalizar, el uso de herramientas como Rstudio y VS Code, junto con la optimización de los datos en formato .rds fueron de suma importancia para superar barreras del hardware al cargar datos de gran volumen. 
 
 # Recomendaciones
 
